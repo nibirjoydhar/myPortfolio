@@ -363,7 +363,7 @@
         <section id="about" class="container row d-flex flex-row flex-wrap mb-2 glass-card-2">
             <!-- Carousel Start -->
             <div id="carouselExampleIndicators" class=" container col-md-7 carousel slide" data-bs-ride="carousel"
-                data-bs-interval="3000">
+                data-bs-interval="2000">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
                         class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -371,24 +371,38 @@
                         aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                         aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                        aria-label="Slide 5"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+                        aria-label="Slide 6"></button>
                 </div>
+
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{ asset('images/nj.jpg') }}" class="d-block w-100 img-fluid" alt="First slide" />
+                        <img src="{{ asset('images/carousul1.jpg') }}" class="d-block w-100 img-fluid"
+                            alt="First slide" />
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ asset('images/njpr.jpg') }}" class="d-block w-100 img-fluid" alt="Second slide" />
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Champion</h5>
-                            <p>in JnU Intra University Programming Contest</p>
-                        </div>
+                        <img src="{{ asset('images/carousul2.jpg') }}" class="d-block w-100 img-fluid"
+                            alt="Second slide" />
                     </div>
                     <div class="carousel-item">
-                        <img src="{{ asset('images/njprr.jpg') }}" class="d-block w-100 img-fluid" alt="Third slide" />
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Champion</h5>
-                            <p>in JnU Intra University Programming Contest</p>
-                        </div>
+                        <img src="{{ asset('images/carousul3.jpg') }}" class="d-block w-100 img-fluid"
+                            alt="Second slide" />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ asset('images/carousul4.jpg') }}" class="d-block w-100 img-fluid"
+                            alt="Second slide" />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ asset('images/carousul5.jpg') }}" class="d-block w-100 img-fluid"
+                            alt="Second slide" />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ asset('images/carousul6.jpg') }}" class="d-block w-100 img-fluid"
+                            alt="Second slide" />
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -930,12 +944,12 @@
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const form = e.target;
-            const formData = new FormData(form);
+            const form=e.target;
+            const formData=new FormData(form);
 
             // Log form data
             console.log('Form data:');
-            for (let [key, value] of formData.entries()) {
+            for(let [key, value] of formData.entries()) {
                 console.log(`${key}: ${value}`);
             }
 
@@ -947,27 +961,27 @@
                 },
                 body: formData
             })
-            .then(res => {
-                console.log('Response status:', res.status);
-                if (!res.ok) {
-                    return res.json().then(err => {
-                        throw new Error(`HTTP error! Status: ${res.status}, Message: ${err.error || 'Unknown error'}`);
-                    });
-                }
-                return res.json();
-            })
-            .then(data => {
-                console.log('Success response:', data);
-                document.getElementById('contactResponse').innerHTML =
-                    `<div class="alert alert-success">${data.success}</div>`;
-                form.reset();
-            })
-            .catch(err => {
-                console.error('Fetch error:', err);
-                document.getElementById('contactResponse').innerHTML =
-                    `<div class="alert alert-danger">Something went wrong! ${err.message}</div>`;
-            });
-        }); 
+                .then(res => {
+                    console.log('Response status:', res.status);
+                    if(!res.ok) {
+                        return res.json().then(err => {
+                            throw new Error(`HTTP error! Status: ${res.status}, Message: ${err.error||'Unknown error'}`);
+                        });
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    console.log('Success response:', data);
+                    document.getElementById('contactResponse').innerHTML=
+                        `<div class="alert alert-success">${data.success}</div>`;
+                    form.reset();
+                })
+                .catch(err => {
+                    console.error('Fetch error:', err);
+                    document.getElementById('contactResponse').innerHTML=
+                        `<div class="alert alert-danger">Something went wrong! ${err.message}</div>`;
+                });
+        });
         //mailer ended
 
         // for search
