@@ -537,7 +537,7 @@
                     <div class="col-md-4" data-aos="fade-down">
                         <div class="card h-100">
                             <div class="card-body">
-                                <h5 class="card-title">Crop Recommendation System</h5>
+                                <h5 class="card-title">Crop Recommendation</h5>
                                 <p>Recommends crops based on soil and weather using ML.</p>
                                 <p><strong>Tech:</strong> Python (Flask), Docker</p>
                                 <div class="d-flex justify-content-center align-items-center text-center gap-5">
@@ -926,31 +926,51 @@
             once: true,
             easing: 'ease-in-out'
         });
-
+        //for mailer
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const form=e.target;
-            const formData=new FormData(form);
+            const form = e.target;
+            const formData = new FormData(form);
+
+            // Log form data
+            console.log('Form data:');
+            for (let [key, value] of formData.entries()) {
+                console.log(`${key}: ${value}`);
+            }
 
             fetch("{{ route('contact.send') }}", {
                 method: 'POST',
                 headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Accept': 'application/json'
                 },
                 body: formData
             })
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById('contactResponse').innerHTML=
-                        `<div class="alert alert-success">${data.success}</div>`;
-                    form.reset();
-                })
-                .catch(err => {
-                    document.getElementById('contactResponse').innerHTML=
-                        `<div class="alert alert-danger">Something went wrong!</div>`;
-                });
-        });
+            .then(res => {
+                console.log('Response status:', res.status);
+                if (!res.ok) {
+                    return res.json().then(err => {
+                        throw new Error(`HTTP error! Status: ${res.status}, Message: ${err.error || 'Unknown error'}`);
+                    });
+                }
+                return res.json();
+            })
+            .then(data => {
+                console.log('Success response:', data);
+                document.getElementById('contactResponse').innerHTML =
+                    `<div class="alert alert-success">${data.success}</div>`;
+                form.reset();
+            })
+            .catch(err => {
+                console.error('Fetch error:', err);
+                document.getElementById('contactResponse').innerHTML =
+                    `<div class="alert alert-danger">Something went wrong! ${err.message}</div>`;
+            });
+        }); 
+        //mailer ended
+
+        // for search
 
         let highlights=[];
         let currentIndex=0;
