@@ -43,7 +43,7 @@
         }
 
         .navbar-brand {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: #3b82f6 !important;
             font-weight: 700;
         }
@@ -276,15 +276,24 @@
         .text-justify {
             text-align: justify;
         }
+
+        header {
+            transition: transform 0.3s ease;
+            /* Smooth transition for sliding */
+        }
+
+        header.hidden {
+            transform: translateY(-100%);
+            /* Moves the header up and out of view */
+        }
     </style>
 </head>
 
 <body>
 
-    <header class="bg-light header py-3 shadow-sm fixed-top">
+    <header class="bg-light header py-4 shadow-sm fixed-top">
         <div class="container d-flex flex-wrap justify-content-between align-items-center">
             <a href="{{ url('/') }}" class="navbar-brand fw-bold text-primary">MyPortfolio</a>
-
             <!-- Section Links -->
             <div
                 class="d-flex align-items-center gap-3 rounded-pill border border-primary px-4 py-2 text-secondary small">
@@ -432,6 +441,7 @@
 
             </div>
         </section>
+
 
         <!-- Skills Section -->
         <section id="skills" class="p-5 glass-card">
@@ -789,8 +799,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="card h-100 text-center border-0 shadow-sm">
                             <div class="card-body">
-                                <img src="{{ asset('images/toph.png') }}" alt="Toph Logo" width="48" height="48"
-                                    class="mb-3">
+                                <i class="fas fa-code mb-3" style="font-size: 32px; color: #17a2b8;"></i>
                                 <h5 class="card-title">Toph</h5>
                                 <p class="text-muted">~300+ Problems Solved</p>
                                 <a href="https://toph.co/u/nibirjoydhar" target="_blank"
@@ -803,8 +812,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="card h-100 text-center border-0 shadow-sm">
                             <div class="card-body">
-                                <img src="{{ asset('images/lightoj.png') }}" alt="LightOJ Logo" width="48" height="48"
-                                    class="mb-3">
+                                <i class="fas fa-laptop-code mb-3" style="font-size: 32px; color: #6c757d;"></i>
                                 <h5 class="card-title">LightOJ</h5>
                                 <p class="text-muted">~200+ Problems Solved</p>
                                 <a href="https://lightoj.com/user/nibirjoydhar" target="_blank"
@@ -812,6 +820,80 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wavy Divider -->
+        <div style="margin-top: -5px;">
+            <svg viewBox="0 0 1440 100" style="display: block;" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#f8f9fa" d="M0,64L1440,100L1440,0L0,0Z"></path>
+            </svg>
+        </div>
+
+        <!-- Education & Organization Section -->
+        <section id="education" class="p-5 bg-light" data-aos="fade-up">
+            <div class="container">
+                <h2 class="section-title">Education & Organization</h2>
+                <div class="row g-4">
+
+                    <!-- University -->
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body d-flex align-items-start">
+                                <i class="fas fa-university fa-2x text-primary me-3"></i>
+                                <div>
+                                    <h5 class="card-title mb-1">B.Sc. in Computer Science & Engineering</h5>
+                                    <p class="mb-1">Jagannath University, Dhaka</p>
+                                    <small class="text-muted">CGPA: 3.53 (till 4-1)</small>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Competitive Programming Club -->
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body d-flex align-items-start">
+                                <i class="fas fa-users fa-2x text-success me-3"></i>
+                                <div>
+                                    <h5 class="card-title mb-1">Member, Competitive Programming Club</h5>
+                                    <p class="mb-1">Jagannath University</p>
+                                    <small class="text-muted">Since 2020</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IEEE Student Branch -->
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body d-flex align-items-start">
+                                <i class="fas fa-microchip fa-2x text-info me-3"></i>
+                                <div>
+                                    <h5 class="card-title mb-1">Member, IEEE Student Branch</h5>
+                                    <p class="mb-1">Jagannath University</p>
+                                    <small class="text-muted">Since 2023</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ICPC Team -->
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body d-flex align-items-start">
+                                <i class="fas fa-code fa-2x text-danger me-3"></i>
+                                <div>
+                                    <h5 class="card-title mb-1">Team Leader, JnU_TLE</h5>
+                                    <p class="mb-1">ICPC Dhaka Regional 2023</p>
+                                    <small class="text-muted">Team: JnU_TLE</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -898,7 +980,7 @@
                     <ul class="list-unstyled">
                         <li><i class="fas fa-map-marker-alt me-2"></i>9-10, Chittaranjan Avenue, Dhaka 1100</li>
                         <li><i class="fas fa-phone me-2"></i>+88 015-215 46883</li>
-                        <li><i class="fas fa-envelope me-2"></i>info@myportfolio.com</li>
+                        <li><i class="fas fa-envelope me-2"></i>nibirjoydhar@gmail.com</li>
                     </ul>
                 </div>
 
@@ -928,7 +1010,6 @@
             </div>
         </div>
     </footer>
-
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -985,7 +1066,27 @@
         //mailer ended
 
         // for search
+        // Sticky Header Scroll Effect
+        let lastScroll=0;
+        let isProgrammaticScroll=false; // Flag to track programmatic scrolls
 
+        window.addEventListener('scroll', () => {
+            const header=document.querySelector('header');
+            const currentScroll=window.pageYOffset;
+
+            // Only hide/show header for user-initiated scrolls
+            if(!isProgrammaticScroll) {
+                if(currentScroll>lastScroll&&currentScroll>100) {
+                    header.classList.add('hidden'); // Hide header when scrolling down
+                } else {
+                    header.classList.remove('hidden'); // Show header when scrolling up
+                }
+            }
+
+            lastScroll=currentScroll;
+        });
+
+        // Search Functionality
         let highlights=[];
         let currentIndex=0;
 
@@ -997,7 +1098,6 @@
             clearSearch();
 
             const regex=new RegExp(`(${term})`, 'gi');
-
             const walker=document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
                 acceptNode: function(node) {
                     return node.nodeValue.trim().length>0&&node.parentNode.nodeName!=='SCRIPT'
@@ -1013,7 +1113,7 @@
             textNodes.forEach(node => {
                 if(regex.test(node.nodeValue)) {
                     const span=document.createElement('span');
-                    span.innerHTML=node.nodeValue.replace(regex, '<mark class=\"search-highlight\">$1</mark>');
+                    span.innerHTML=node.nodeValue.replace(regex, '<mark class="search-highlight">$1</mark>');
                     node.parentNode.replaceChild(span, node);
                 }
             });
@@ -1042,10 +1142,23 @@
 
         function scrollToCurrent() {
             if(highlights.length===0) return;
+
+            // Set flag to indicate programmatic scroll
+            isProgrammaticScroll=true;
+
+            // Ensure header is visible during search navigation
+            const header=document.querySelector('header');
+            header.classList.remove('hidden');
+
             highlights.forEach(h => h.style.outline='');
             highlights[currentIndex].scrollIntoView({behavior: 'smooth', block: 'center'});
             highlights[currentIndex].style.outline='2px solid red';
             updateResultInfo();
+
+            // Reset flag after scroll completes (using a timeout to match smooth scroll duration)
+            setTimeout(() => {
+                isProgrammaticScroll=false;
+            }, 600); // Adjust timeout if your smooth scroll duration changes
         }
 
         function clearSearch() {
@@ -1075,6 +1188,8 @@
         });
 
         document.getElementById('clearBtn').addEventListener('click', clearSearch);
+
+
     </script>
 
 
