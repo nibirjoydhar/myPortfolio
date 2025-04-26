@@ -99,20 +99,16 @@
             color: #dbeafe;
         }
 
-        .ls-15 {
-            letter-spacing: 15px;
+        .ls-big {
+            letter-spacing: 12px;
         }
 
-        .ls-5 {
+        .ls-small {
             letter-spacing: 5px;
         }
 
-        .ls-3 {
-            letter-spacing: 3px;
-        }
-
-        .ls-2 {
-            letter-spacing: 2px;
+        .ls-vsmall {
+            letter-spacing: 1px;
         }
 
         /* Section Styling */
@@ -286,489 +282,555 @@
             transform: translateY(-100%);
             /* Moves the header up and out of view */
         }
+
+        /* responsive */
+        body {
+            overflow-x: hidden;
+            /* Prevent horizontal scrolling */
+        }
+
+        .container {
+            max-width: 100%;
+            /* Ensure container doesn't exceed viewport */
+            /* padding-left: 15px;
+            padding-right: 15px; */
+        }
+
+        section,
+        header {
+            max-width: 100vw;
+            /* Ensure sections don't exceed viewport width */
+            overflow-x: hidden;
+            /* Hide any overflow */
+        }
+
+        .glass-card,
+        .glass-card-2 {
+            width: 100%;
+            /* Ensure cards fit within container */
+            box-sizing: border-box;
+            /* Include padding and borders in width */
+        }
+
+        #hero,
+        #about,
+        #skills,
+        #projects,
+        #achievements,
+        #online-judges,
+        #education,
+        #contact {
+            padding: 20px 10px;
+            /* Reduce padding on small screens */
+        }
+
+        /* Ensure images and carousel don't overflow */
+        .carousel-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Fix card layouts */
+        .card {
+            width: 100%;
+            margin: 0 auto;
+        }
     </style>
 </head>
 
 <body>
-
-    <header class="bg-light header py-4 shadow-sm fixed-top">
-        <div class="container d-flex flex-wrap justify-content-between align-items-center">
-            <a href="{{ url('/') }}" class="navbar-brand fw-bold text-primary">MyPortfolio</a>
-            <!-- Section Links -->
-            <div
-                class="d-flex align-items-center gap-3 rounded-pill border border-primary px-4 py-2 text-secondary small">
-                <a href="#hero" class="text-dark text-decoration-none">Head</a>
-                <a href="#about" class="text-dark text-decoration-none">About</a>
-                <a href="#skills" class="text-dark text-decoration-none">Skill</a>
-                <a href="#projects" class="text-dark text-decoration-none">Project</a>
-                <a href="#achievements" class="text-dark text-decoration-none">Achievements</a>
-                <a href="#online-judges" class="text-dark text-decoration-none">Online-Judges</a>
-                <a href="#contact" class="text-dark text-decoration-none">Contact</a>
-            </div>
-
-
-            <!-- Search Form -->
-            <form class="d-flex align-items-center justify-content-end mt-2 mt-md-0"
-                onsubmit="highlightAndNavigate(event)">
-                <div class="position-relative">
-                    <i
-                        class="fas fa-search position-absolute top-50 start-0 translate-middle-y ps-3 text-secondary"></i>
-                    <input id="searchInput" type="search" class="form-control form-control-sm ps-5 small"
-                        placeholder="Search here" style="font-size: 0.875rem;">
-                </div>
-                <span id="resultInfo" class="text-muted small ms-2 me-2 d-inline-block d-none"
-                    style="font-size: 0.75rem;">0 of
-                    0</span>
-
-                <button type="button" class="btn btn-sm btn-outline-success me-1 py-0 px-2 d-none" id="prevBtn"
-                    style="font-size: 0.75rem;">←</button>
-                <button type="button" class="btn btn-sm btn-outline-success me-1 py-0 px-2 d-none" id="nextBtn"
-                    style="font-size: 0.75rem;">→</button>
-                <button type="button" class="btn btn-sm btn-outline-danger py-0 px-2 d-none" id="clearBtn"
-                    style="font-size: 0.75rem;">✕</button>
-            </form>
-        </div>
-    </header>
-
-
-    <div class="container">
-        <!-- Hero Section -->
-        <section id="hero" class="container p-5 mt-4 mb-4 glass-card  align-items-center" data-aos="zoom-in">
-            <div class="d-flex flex-column flex-md-column">
-                <h2
-                    class="mx-auto fw-bold ls-15 text-primary max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
-                    Hi! Here's a Glimpse of My Craft</h2>
-            </div>
-            <div class="d-flex">
-                <div class="container d-flex flex-column flex-md-row align-items-center">
-                    <img src="{{ asset('images/nibir.png') }}" class="rounded-circle me-md-5 mb-4 mb-md-0" width="150"
-                        height="150" alt="Nibir Joydhar" />
-                    <div>
-                        <h1 class="display-4 ls-5 text-muted mx-auto text-center">I'm Nibir Joydhar</h1>
-                        <p class="lead ls-3">Competitive Programmer | Full Stack Developer | Tech Enthusiast</p>
-                        <p class="mb-3 text-muted ls-2">Specialist on Codeforces | MERN & Laravel Developer | ICPC &
-                            IEEEXtreme Contestant
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex flex-column flex-md-column">
-                <div class="d-flex justify-content-center align-items-center gap-5 flex-wrap">
-                    <a href="https://linkedin.com/in/nibirjoydhar" class="text-black" target="_blank"><i
-                            class="fab fa-linkedin fa-lg"></i></a>
-                    <a href="https://github.com/nibirjoydhar" class="text-black" target="_blank"><i
-                            class="fab fa-github fa-lg"></i></a>
-                    <a href="https://facebook.com/nibirjoydhar" class="text-black" target="_blank"><i
-                            class="fab fa-facebook fa-lg"></i></a>
-                    <a href="https://instagram.com/nibirjoydhar" class="text-black" target="_blank"><i
-                            class="fab fa-instagram fa-lg"></i></a>
-                    <a href="https://x.com/NibirJoydhar" target="_blank" class="text-dark"><i class="fab fa-x"></i></a>
-                    <a href="mailto:nibirjoydhar@gmail.com" class="text-dark"><i class="fas fa-envelope fa-lg"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="container row d-flex flex-row flex-wrap mb-2 glass-card-2">
-            <!-- Carousel Start -->
-            <div id="carouselExampleIndicators" class=" container col-md-7 carousel slide" data-bs-ride="carousel"
-                data-bs-interval="2000">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                        class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-                        aria-label="Slide 4"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
-                        aria-label="Slide 5"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
-                        aria-label="Slide 6"></button>
-                </div>
-
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="{{ asset('images/carousul1.jpg') }}" class="d-block w-100 img-fluid"
-                            alt="First slide" />
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('images/carousul2.jpg') }}" class="d-block w-100 img-fluid"
-                            alt="Second slide" />
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('images/carousul3.jpg') }}" class="d-block w-100 img-fluid"
-                            alt="Second slide" />
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('images/carousul4.jpg') }}" class="d-block w-100 img-fluid"
-                            alt="Second slide" />
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('images/carousul5.jpg') }}" class="d-block w-100 img-fluid"
-                            alt="Second slide" />
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('images/carousul6.jpg') }}" class="d-block w-100 img-fluid"
-                            alt="Second slide" />
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-            <!-- Carousel End -->
-
-            <!-- About -->
-            <div id="about" class="col-md-5 p-3 text-justify" data-aos="fade-up">
+    <div class="px-2 px-md-5">
+        <header class="bg-light header py-2 px-2 px-md-5 shadow-sm fixed-top">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container">
-                    <h2 class="section-title">About Me</h2>
-                    <p>I'm a final year CSE student at Jagannath University, passionate about full-stack development and
-                        problem-solving.</p>
-                    <p>With 3000+ problems solved across platforms like Codeforces, LeetCode, and AtCoder, I actively
-                        compete and represent my university in contests.</p>
-                    <p>I love building clean, scalable applications and enjoy mentoring, learning, and exploring the
-                        latest in tech.</p>
+
+                    <a href="{{ url('/') }}" class="navbar-brand fw-bold text-primary">MyPortfolio</a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="#hero">Head</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#skills">Skill</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#projects">Project</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#online-judges">Online-Judges</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        </ul>
+                        <!-- Search Form -->
+                        <form class="d-flex align-items-center" onsubmit="highlightAndNavigate(event)">
+                            <div class="position-relative">
+                                <i
+                                    class="fas fa-search position-absolute top-50 start-0 translate-middle-y ps-3 text-secondary"></i>
+                                <input id="searchInput" type="search" class="form-control form-control-sm ps-5"
+                                    placeholder="Search here" style="font-size: 0.875rem;">
+                            </div>
+                            <span id="resultInfo" class="text-muted small ms-2 me-2 d-inline-block d-none"
+                                style="font-size: 0.75rem;">0 of 0</span>
+                            <button type="button" class="btn btn-sm btn-outline-success me-1 py-0 px-2 d-none"
+                                id="prevBtn" style="font-size: 0.75rem;">←</button>
+                            <button type="button" class="btn btn-sm btn-outline-success me-1 py-0 px-2 d-none"
+                                id="nextBtn" style="font-size: 0.75rem;">→</button>
+                            <button type="button" class="btn btn-sm btn-outline-danger py-0 px-2 d-none" id="clearBtn"
+                                style="font-size: 0.75rem;">✕</button>
+                        </form>
+
+                    </div>
                 </div>
+            </nav>
+        </header>
 
-            </div>
-        </section>
 
-
-        <!-- Skills Section -->
-        <section id="skills" class="p-5 glass-card">
-            <div class="container">
-                <h2 class="section-title">Skills</h2>
-                <div class="row g-4">
-                    <!-- Programming Languages -->
-                    <div class="col-md-4" data-aos="zoom-in">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-code me-2"></i>Languages</h5>
-                                <ul class="mb-0">
-                                    <li>C/C++</li>
-                                    <li>Java</li>
-                                    <li>Python</li>
-                                    <li>PHP</li>
-                                    <li>JavaScript</li>
-                                    <li>TypeScript</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Frameworks & Libraries -->
-                    <div class="col-md-4" data-aos="zoom-in">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-layer-group me-2"></i>Frameworks & Libraries
-                                </h5>
-                                <ul class="mb-0">
-                                    <li>Laravel</li>
-                                    <li>React</li>
-                                    <li>Express.js</li>
-                                    <li>Django</li>
-                                    <li>Bootstrap, Tailwind CSS</li>
-                                    <li>jQuery</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Databases -->
-                    <div class="col-md-4" data-aos="zoom-in">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-database me-2"></i>Databases</h5>
-                                <ul class="mb-0">
-                                    <li>MySQL</li>
-                                    <li>MongoDB</li>
-                                    <li>Firebase</li>
-                                    <li>SQL</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- DevOps & Tools -->
-                    <div class="col-md-4" data-aos="zoom-in">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-tools me-2"></i>DevOps & Tools</h5>
-                                <ul class="mb-0">
-                                    <li>Git, GitHub</li>
-                                    <li>Docker, Kubernetes</li>
-                                    <li>CI/CD pipelines</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- OS & IDEs -->
-                    <div class="col-md-4" data-aos="zoom-in">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-laptop-code me-2"></i>OS & IDEs</h5>
-                                <ul class="mb-0">
-                                    <li>Ubuntu, Lubuntu, Windows 7/10/11</li>
-                                    <li>VS Code, Sublime Text, CodeBlocks</li>
-                                    <li>NetBeans, PyCharm</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Soft Skills & Misc -->
-                    <div class="col-md-4" data-aos="zoom-in">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-user-check me-2"></i>Other Skills</h5>
-                                <ul class="mb-0">
-                                    <li>Problem Solving (2000+ problems solved)</li>
-                                    <li>Leadership, Teamwork, Communication</li>
-                                    <li>Photo & Video Editing, Graphics Design</li>
-                                </ul>
-                            </div>
+        <div class="container px-md-5">
+            <!-- Hero Section -->
+            <section id="hero" class="container p-3 p-md-5 mt-4 mb-4 glass-card  align-items-center" data-aos="zoom-in">
+                <div class="d-flex flex-column mt-4 flex-md-column">
+                    <h2
+                        class="mx-auto fw-bold ls-big text-primary max-w-2xl text-center text-4xl font-medium leading-tight tracking-tighter text-text-primary md:text-6xl md:leading-[64px]">
+                        Hi! Here's a Glimpse of My Craft</h2>
+                </div>
+                <div class="d-flex">
+                    <div class="container d-flex flex-column flex-md-row align-items-center">
+                        <img src="{{ asset('images/nibir.png') }}" class="rounded-circle me-md-5 mb-4 mb-md-0"
+                            width="150" height="150" alt="Nibir Joydhar" />
+                        <div>
+                            <h1 class="display-4 ls-small text-muted mx-auto text-center">I'm Nibir Joydhar</h1>
+                            <p class="lead ls-vsmall">Competitive Programmer | Full Stack Developer | Tech Enthusiast
+                            </p>
+                            <p class="mb-3 text-muted ls-vsmall">Specialist on Codeforces | MERN & Laravel Developer |
+                                ICPC
+                                &
+                                IEEEXtreme Contestant
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+                <div class="d-flex flex-column flex-md-column">
+                    <div class="d-flex justify-content-center align-items-center gap-4 flex-wrap">
+                        <a href="https://linkedin.com/in/nibirjoydhar" class="text-black" target="_blank"><i
+                                class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="https://github.com/nibirjoydhar" class="text-black" target="_blank"><i
+                                class="fab fa-github fa-lg"></i></a>
+                        <a href="https://facebook.com/nibirjoydhar" class="text-black" target="_blank"><i
+                                class="fab fa-facebook fa-lg"></i></a>
+                        <a href="https://instagram.com/nibirjoydhar" class="text-black" target="_blank"><i
+                                class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://x.com/NibirJoydhar" target="_blank" class="text-dark"><i
+                                class="fab fa-x"></i></a>
+                        <a href="mailto:nibirjoydhar@gmail.com" class="text-dark"><i
+                                class="fas fa-envelope fa-lg"></i></a>
+                    </div>
+                </div>
+            </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="p-5 glass-card-2 mt-3">
-            <div class="container">
-                <h2 class="section-title">Projects</h2>
-                <div class="row g-4">
+            <!-- About Section -->
+            <section id="about" class="container row d-flex flex-row flex-wrap mb-2 glass-card-2">
+                <!-- Carousel Start -->
+                <div id="carouselExampleIndicators" class=" container col-md-7 carousel slide" data-bs-ride="carousel"
+                    data-bs-interval="2000" data-aos="fade-right">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                            aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                            aria-label="Slide 5"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+                            aria-label="Slide 6"></button>
+                    </div>
 
-                    <div class="col-md-4" data-aos="fade-down">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title">Job Board</h5>
-                                <p>Cloud-based job platform with login, profiles, post/apply jobs.</p>
-                                <p><strong>Tech:</strong> PHP, MySQL, Bootstrap, Docker</p>
-                                <div class="d-flex justify-content-center align-items-center text-center gap-5">
-                                    <a href="http://3.92.1.108:8080/" target="_blank">Live Demo</a>
-                                    <a href="https://github.com/nibirjoydhar/job-board" target="_blank">Git repo</a>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{{ asset('images/carousul1.jpg') }}" class="d-block vw-100 img-fluid"
+                                alt="First slide" />
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ asset('images/carousul2.jpg') }}" class="d-block w-100 img-fluid"
+                                alt="Second slide" />
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ asset('images/carousul3.jpg') }}" class="d-block w-100 img-fluid"
+                                alt="Second slide" />
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ asset('images/carousul4.jpg') }}" class="d-block w-100 img-fluid"
+                                alt="Second slide" />
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ asset('images/carousul5.jpg') }}" class="d-block w-100 img-fluid"
+                                alt="Second slide" />
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ asset('images/carousul6.jpg') }}" class="d-block w-100 img-fluid"
+                                alt="Second slide" />
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <!-- Carousel End -->
+
+                <!-- About -->
+                <div id="about" class="col-md-5 p-3 text-justify" data-aos="fade-left">
+                    <div class="container">
+                        <h2 class="section-title">About Me</h2>
+                        <p>I'm a final year CSE student at Jagannath University, passionate about full-stack development
+                            and
+                            problem-solving.</p>
+                        <p>With 3000+ problems solved across platforms like Codeforces, LeetCode, and AtCoder, I
+                            actively
+                            compete and represent my university in contests.</p>
+                        <p>I love building clean, scalable applications and enjoy mentoring, learning, and exploring the
+                            latest in tech.</p>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- Skills Section -->
+            <section id="skills" class="p-3 p-md-5 glass-card">
+                <div class="container">
+                    <h2 class="section-title">Skills</h2>
+                    <div class="row g-4">
+                        <!-- Programming Languages -->
+                        <div class="col-md-4" data-aos="zoom-in">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-code me-2"></i>Languages</h5>
+                                    <ul class="mb-0">
+                                        <li>C/C++</li>
+                                        <li>Java</li>
+                                        <li>Python</li>
+                                        <li>PHP</li>
+                                        <li>JavaScript</li>
+                                        <li>TypeScript</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Frameworks & Libraries -->
+                        <div class="col-md-4" data-aos="zoom-in">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-layer-group me-2"></i>Frameworks & Libraries
+                                    </h5>
+                                    <ul class="mb-0">
+                                        <li>Laravel</li>
+                                        <li>React</li>
+                                        <li>Express.js</li>
+                                        <li>Django</li>
+                                        <li>Bootstrap, Tailwind CSS</li>
+                                        <li>jQuery</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Databases -->
+                        <div class="col-md-4" data-aos="zoom-in">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-database me-2"></i>Databases</h5>
+                                    <ul class="mb-0">
+                                        <li>MySQL</li>
+                                        <li>MongoDB</li>
+                                        <li>Firebase</li>
+                                        <li>SQL</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DevOps & Tools -->
+                        <div class="col-md-4" data-aos="zoom-in">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-tools me-2"></i>DevOps & Tools</h5>
+                                    <ul class="mb-0">
+                                        <li>Git, GitHub</li>
+                                        <li>Docker, Kubernetes</li>
+                                        <li>CI/CD pipelines</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- OS & IDEs -->
+                        <div class="col-md-4" data-aos="zoom-in">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-laptop-code me-2"></i>OS & IDEs</h5>
+                                    <ul class="mb-0">
+                                        <li>Ubuntu, Lubuntu, Windows 7/10/11</li>
+                                        <li>VS Code, Sublime Text, CodeBlocks</li>
+                                        <li>NetBeans, PyCharm</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Soft Skills & Misc -->
+                        <div class="col-md-4" data-aos="zoom-in">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-user-check me-2"></i>Other Skills</h5>
+                                    <ul class="mb-0">
+                                        <li>Problem Solving (2000+ problems solved)</li>
+                                        <li>Leadership, Teamwork, Communication</li>
+                                        <li>Photo & Video Editing, Graphics Design</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
 
-                    <div class="col-md-4" data-aos="fade-down">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title">Crop Recommendation</h5>
-                                <p>Recommends crops based on soil and weather using ML.</p>
-                                <p><strong>Tech:</strong> Python (Flask), Docker</p>
-                                <div class="d-flex justify-content-center align-items-center text-center gap-5">
-                                    <a href="http://13.239.37.214:5000/" target="_blank">Live Demo</a>
-                                    <a href="https://github.com/nibirjoydhar/Crop_Recommendation" target="_blank">Git
-                                        repo</a>
+            <!-- Projects Section -->
+            <section id="projects" class="p-3 p-md-5 glass-card-2 mt-3">
+                <div class="container">
+                    <h2 class="section-title">Projects</h2>
+                    <div class="row g-4">
+
+                        <div class="col-md-4" data-aos="fade-down">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Job Board</h5>
+                                    <p>Cloud-based job platform with login, profiles, post/apply jobs.</p>
+                                    <p><strong>Tech:</strong> PHP, MySQL, Bootstrap, Docker</p>
+                                    <div class="d-flex justify-content-center align-items-center text-center gap-5">
+                                        <a href="http://3.92.1.108:8080/" target="_blank">Live Demo</a>
+                                        <a href="https://github.com/nibirjoydhar/job-board" target="_blank">Git repo</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4" data-aos="fade-down">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Crop Recommendation</h5>
+                                    <p>Recommends crops based on soil and weather using ML.</p>
+                                    <p><strong>Tech:</strong> Python (Flask), Docker</p>
+                                    <div class="d-flex justify-content-center align-items-center text-center gap-5">
+                                        <a href="http://13.239.37.214:5000/" target="_blank">Live Demo</a>
+                                        <a href="https://github.com/nibirjoydhar/Crop_Recommendation"
+                                            target="_blank">Git
+                                            repo</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-down">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Todo List</h5>
+                                    <p>Simple MERN-based todo list with mark/delete features.</p>
+                                    <p><strong>Tech:</strong> React, Node.js, MongoDB</p>
+                                    <div class="d-flex justify-content-center align-items-center text-center gap-5">
+
+                                        <a href="http://52.62.105.224:3000/" target="_blank">Live Demo</a>
+                                        <a href="https://github.com/nibirjoydhar/TodoList" target="_blank">Git repo</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-down">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ride Me</h5>
+                                    <p>Instant ride-booking app with surge pricing, ratings, and safety features.</p>
+                                    <p><strong>Tech:</strong> Java, Firebase</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-down">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Organic Food</h5>
+                                    <p>Pure organic food delivery platform with rating and payment.</p>
+                                    <p><strong>Tech:</strong> PHP, MySQL, JavaScript</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-down">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Smart Lock</h5>
+                                    <p>Fingerprint + mobile-controlled smart lock system.</p>
+                                    <p><strong>Tech:</strong> Arduino, Java, Solenoid Lock</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" data-aos="fade-down">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Line Following Robot</h5>
+                                    <p>Autonomous bot that follows lines and avoids obstacles.</p>
+                                    <p><strong>Tech:</strong> Arduino Uno, IR Sensors</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4" data-aos="fade-down">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title">Todo List</h5>
-                                <p>Simple MERN-based todo list with mark/delete features.</p>
-                                <p><strong>Tech:</strong> React, Node.js, MongoDB</p>
-                                <div class="d-flex justify-content-center align-items-center text-center gap-5">
+                </div>
+            </section>
 
-                                    <a href="http://52.62.105.224:3000/" target="_blank">Live Demo</a>
-                                    <a href="https://github.com/nibirjoydhar/TodoList" target="_blank">Git repo</a>
+            <!-- Achievements Section -->
+            <section id="achievements" class="p-3 p-md-5 glass-card">
+                <div class="container">
+                    <h2 class="section-title">Achievements</h2>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card h-100" data-aos="fade-left">
+                                <div class="card-body">
+                                    <h5 class="card-title">🥇 JnU Intra Programming Contest 2024</h5>
+                                    <p class="card-text">Champion</p>
+                                    <a href="https://toph.co/contests/training/pefv6lt/standings" target="_blank"
+                                        class="btn btn-sm btn-primary">View Standing</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100" data-aos="fade-left">
+                                <div class="card-body">
+                                    <h5 class="card-title">🥇 CSE Sports Carnival 2023</h5>
+                                    <p class="card-text">Champion</p>
+                                    <a href="https://vjudge.net/contest/594718#rank" target="_blank"
+                                        class="btn btn-sm btn-primary">View Standing</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100" data-aos="fade-left">
+                                <div class="card-body">
+                                    <h5 class="card-title">🥈 IEEEXtreme 17.0</h5>
+                                    <p class="card-text">2nd in Bangladesh (Global 556) – Team: JnUxTeam</p>
+                                    <a href="https://ieeextreme.org/ieeextreme-17-0-ranking/" target="_blank"
+                                        class="btn btn-sm btn-primary">View Standing</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100" data-aos="fade-left">
+                                <div class="card-body">
+                                    <h5 class="card-title">🏅 IEEEXtreme 18.0</h5>
+                                    <p class="card-text">4th in Bangladesh (Global 420) – Team: JnUxTeam</p>
+                                    <a href="https://ieeextreme.org/ieeextreme-18-0-ranking/" target="_blank"
+                                        class="btn btn-sm btn-primary">View Standing</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100" data-aos="fade-left">
+                                <div class="card-body">
+                                    <h5 class="card-title">🏅 IUT National ICT Fest 2024</h5>
+                                    <p class="card-text">27th – Team: JnuXTeam</p>
+                                    <a href="https://toph.co/c/iut-11th-national-ict-fest-2024/standings"
+                                        target="_blank" class="btn btn-sm btn-primary">View Standing</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card h-100" data-aos="fade-left">
+                                <div class="card-body">
+                                    <h5 class="card-title">🏅 BUET Inter University Programming Contest 2023</h5>
+                                    <p class="card-text">49th – Team : JnU_ABC</p>
+                                    <a href="https://toph.co/c/buet-inter-university-2023/standings" target="_blank"
+                                        class="btn btn-sm btn-primary">View Standing</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100" data-aos="fade-left">
+                                <div class="card-body">
+                                    <h5 class="card-title">🏅 BUET Inter University Programming Contest 2024</h5>
+                                    <p class="card-text">54th – Team: JnU_Shomonnoyok</p>
+                                    <a href="https://toph.co/c/inter-university-buet-cse-fest-2024/standings"
+                                        target="_blank" class="btn btn-sm btn-primary">View Standing</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card h-100" data-aos="fade-left">
+                                <div class="card-body">
+                                    <h5 class="card-title">🏅 ICPC Dhaka Regional 2023</h5>
+                                    <p class="card-text">99th – Team: JnU_TLE</p>
+                                    <a href="https://bapsoj.org/contests/icpc-dhaka-regional-site-2023/standings"
+                                        target="_blank" class="btn btn-sm btn-primary">View Standing</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100" data-aos="fade-left">
+                                <div class="card-body">
+                                    <h5 class="card-title">📐 National Math Olympiad 2023</h5>
+                                    <p class="card-text">Participated</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4" data-aos="fade-down">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title">Ride Me</h5>
-                                <p>Instant ride-booking app with surge pricing, ratings, and safety features.</p>
-                                <p><strong>Tech:</strong> Java, Firebase</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" data-aos="fade-down">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title">Organic Food</h5>
-                                <p>Pure organic food delivery platform with rating and payment.</p>
-                                <p><strong>Tech:</strong> PHP, MySQL, JavaScript</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" data-aos="fade-down">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title">Smart Lock</h5>
-                                <p>Fingerprint + mobile-controlled smart lock system.</p>
-                                <p><strong>Tech:</strong> Arduino, Java, Solenoid Lock</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" data-aos="fade-down">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title">Line Following Robot</h5>
-                                <p>Autonomous bot that follows lines and avoids obstacles.</p>
-                                <p><strong>Tech:</strong> Arduino Uno, IR Sensors</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+            <!-- Online Judges Section -->
+            <section id="online-judges" class="p-3 p-md-5 glass-card-2" data-aos="fade-right">
+                <div class="container">
+                    <h2 class="section-title">Online Judges</h2>
+                    <div class="row g-4">
 
-        <!-- Achievements Section -->
-        <section id="achievements" class="p-5 glass-card">
-            <div class="container">
-                <h2 class="section-title">Achievements</h2>
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="card h-100" data-aos="fade-up" data-aos-delay="100">
-                            <div class="card-body">
-                                <h5 class="card-title">🥇 JnU Intra Programming Contest 2024</h5>
-                                <p class="card-text">Champion</p>
-                                <a href="https://toph.co/contests/training/pefv6lt/standings" target="_blank"
-                                    class="btn btn-sm btn-primary">View Standing</a>
+                        <!-- Codeforces -->
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 text-center border-0 shadow-sm">
+                                <div class="card-body">
+                                    <i class="fas fa-code fa-2x text-primary mb-3"></i>
+                                    <h5 class="card-title">Codeforces</h5>
+                                    <p class="text-muted">Max Rating: <strong>1580</strong> (Specialist)</p>
+                                    <a href="https://codeforces.com/profile/nibirjoydhar" target="_blank"
+                                        class="btn btn-sm btn-outline-primary">Visit</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100" data-aos="fade-up" data-aos-delay="200">
-                            <div class="card-body">
-                                <h5 class="card-title">🥇 CSE Sports Carnival 2023</h5>
-                                <p class="card-text">Champion</p>
-                                <a href="https://vjudge.net/contest/594718#rank" target="_blank"
-                                    class="btn btn-sm btn-primary">View Standing</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100" data-aos="fade-up" data-aos-delay="300">
-                            <div class="card-body">
-                                <h5 class="card-title">🥈 IEEEXtreme 17.0</h5>
-                                <p class="card-text">2nd in Bangladesh (Global 556) – Team: JnUxTeam</p>
-                                <a href="https://ieeextreme.org/ieeextreme-17-0-ranking/" target="_blank"
-                                    class="btn btn-sm btn-primary">View Standing</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100" data-aos="fade-up" data-aos-delay="400">
-                            <div class="card-body">
-                                <h5 class="card-title">🏅 IEEEXtreme 18.0</h5>
-                                <p class="card-text">4th in Bangladesh (Global 420) – Team: JnUxTeam</p>
-                                <a href="https://ieeextreme.org/ieeextreme-18-0-ranking/" target="_blank"
-                                    class="btn btn-sm btn-primary">View Standing</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100" data-aos="fade-up" data-aos-delay="500">
-                            <div class="card-body">
-                                <h5 class="card-title">🏅 IUT National ICT Fest 2024</h5>
-                                <p class="card-text">27th – Team: JnuXTeam</p>
-                                <a href="https://toph.co/c/iut-11th-national-ict-fest-2024/standings" target="_blank"
-                                    class="btn btn-sm btn-primary">View Standing</a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="card h-100" data-aos="fade-up" data-aos-delay="500">
-                            <div class="card-body">
-                                <h5 class="card-title">🏅 BUET Inter University Programming Contest 2023</h5>
-                                <p class="card-text">49th – Team : JnU_ABC</p>
-                                <a href="https://toph.co/c/buet-inter-university-2023/standings" target="_blank"
-                                    class="btn btn-sm btn-primary">View Standing</a>
+                        <!-- LeetCode -->
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 text-center border-0 shadow-sm">
+                                <div class="card-body">
+                                    <i class="fas fa-terminal fa-2x text-warning mb-3"></i>
+                                    <h5 class="card-title">LeetCode</h5>
+                                    <p class="text-muted">~800+ Problems Solved</p>
+                                    <a href="https://leetcode.com/nibirjoydhar" target="_blank"
+                                        class="btn btn-sm btn-outline-warning">Visit</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100" data-aos="fade-up" data-aos-delay="500">
-                            <div class="card-body">
-                                <h5 class="card-title">🏅 BUET Inter University Programming Contest 2024</h5>
-                                <p class="card-text">54th – Team: JnU_Shomonnoyok</p>
-                                <a href="https://toph.co/c/inter-university-buet-cse-fest-2024/standings"
-                                    target="_blank" class="btn btn-sm btn-primary">View Standing</a>
+                        <!-- CodeChef -->
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 text-center border-0 shadow-sm">
+                                <div class="card-body">
+                                    <i class="fas fa-laptop-code fa-2x text-success mb-3"></i>
+                                    <h5 class="card-title">CodeChef</h5>
+                                    <p class="text-muted">Max Rating: <strong>4★</strong></p>
+                                    <a href="https://www.codechef.com/users/nibirjoydhar" target="_blank"
+                                        class="btn btn-sm btn-outline-success">Visit</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="card h-100" data-aos="fade-up" data-aos-delay="600">
-                            <div class="card-body">
-                                <h5 class="card-title">🏅 ICPC Dhaka Regional 2023</h5>
-                                <p class="card-text">99th – Team: JnU_TLE</p>
-                                <a href="https://bapsoj.org/contests/icpc-dhaka-regional-site-2023/standings"
-                                    target="_blank" class="btn btn-sm btn-primary">View Standing</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100" data-aos="fade-up" data-aos-delay="700">
-                            <div class="card-body">
-                                <h5 class="card-title">📐 National Math Olympiad 2023</h5>
-                                <p class="card-text">Participated</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Online Judges Section -->
-        <section id="online-judges" class="p-5 glass-card-2" data-aos="fade-right">
-            <div class="container">
-                <h2 class="section-title">Online Judges</h2>
-                <div class="row g-4">
-
-                    <!-- Codeforces -->
-                    <div class="col-md-4 col-sm-6">
-                        <div class="card h-100 text-center border-0 shadow-sm">
-                            <div class="card-body">
-                                <i class="fas fa-code fa-2x text-primary mb-3"></i>
-                                <h5 class="card-title">Codeforces</h5>
-                                <p class="text-muted">Max Rating: <strong>1580</strong> (Specialist)</p>
-                                <a href="https://codeforces.com/profile/nibirjoydhar" target="_blank"
-                                    class="btn btn-sm btn-outline-primary">Visit</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- LeetCode -->
-                    <div class="col-md-4 col-sm-6">
-                        <div class="card h-100 text-center border-0 shadow-sm">
-                            <div class="card-body">
-                                <i class="fas fa-terminal fa-2x text-warning mb-3"></i>
-                                <h5 class="card-title">LeetCode</h5>
-                                <p class="text-muted">~800+ Problems Solved</p>
-                                <a href="https://leetcode.com/nibirjoydhar" target="_blank"
-                                    class="btn btn-sm btn-outline-warning">Visit</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- CodeChef -->
-                    <div class="col-md-4 col-sm-6">
-                        <div class="card h-100 text-center border-0 shadow-sm">
-                            <div class="card-body">
-                                <i class="fas fa-laptop-code fa-2x text-success mb-3"></i>
-                                <h5 class="card-title">CodeChef</h5>
-                                <p class="text-muted">Max Rating: <strong>4★</strong></p>
-                                <a href="https://www.codechef.com/users/nibirjoydhar" target="_blank"
-                                    class="btn btn-sm btn-outline-success">Visit</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- AtCoder
+                        <!-- AtCoder
                     <div class="col-md-4 col-sm-6">
                         <div class="card h-100 text-center border-0 shadow-sm">
                             <div class="card-body">
@@ -783,173 +845,175 @@
 
 
 
-                    <!-- Coding Ninjas -->
-                    <div class="col-md-4 col-sm-6">
-                        <div class="card h-100 text-center border-0 shadow-sm">
-                            <div class="card-body">
-                                <i class="fas fa-user-graduate fa-2x text-info mb-3"></i>
-                                <h5 class="card-title">Coding Ninjas</h5>
-                                <p class="text-muted">Max Rating: <strong>2439</strong></p>
-                                <a href="https://www.codingninjas.com/studio/profile/nibirjoydhar" target="_blank"
-                                    class="btn btn-sm btn-outline-danger">Visit</a>
+                        <!-- Coding Ninjas -->
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 text-center border-0 shadow-sm">
+                                <div class="card-body">
+                                    <i class="fas fa-user-graduate fa-2x text-info mb-3"></i>
+                                    <h5 class="card-title">Coding Ninjas</h5>
+                                    <p class="text-muted">Max Rating: <strong>2439</strong></p>
+                                    <a href="https://www.codingninjas.com/studio/profile/nibirjoydhar" target="_blank"
+                                        class="btn btn-sm btn-outline-danger">Visit</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Toph -->
-                    <div class="col-md-4 col-sm-6">
-                        <div class="card h-100 text-center border-0 shadow-sm">
-                            <div class="card-body">
-                                <i class="fas fa-code mb-3" style="font-size: 32px; color: #17a2b8;"></i>
-                                <h5 class="card-title">Toph</h5>
-                                <p class="text-muted">~300+ Problems Solved</p>
-                                <a href="https://toph.co/u/nibirjoydhar" target="_blank"
-                                    class="btn btn-sm btn-outline-info">Visit</a>
+                        <!-- Toph -->
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 text-center border-0 shadow-sm">
+                                <div class="card-body">
+                                    <i class="fas fa-code mb-3" style="font-size: 32px; color: #17a2b8;"></i>
+                                    <h5 class="card-title">Toph</h5>
+                                    <p class="text-muted">~300+ Problems Solved</p>
+                                    <a href="https://toph.co/u/nibirjoydhar" target="_blank"
+                                        class="btn btn-sm btn-outline-info">Visit</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- LightOJ -->
-                    <div class="col-md-4 col-sm-6">
-                        <div class="card h-100 text-center border-0 shadow-sm">
-                            <div class="card-body">
-                                <i class="fas fa-laptop-code mb-3" style="font-size: 32px; color: #6c757d;"></i>
-                                <h5 class="card-title">LightOJ</h5>
-                                <p class="text-muted">~200+ Problems Solved</p>
-                                <a href="https://lightoj.com/user/nibirjoydhar" target="_blank"
-                                    class="btn btn-sm btn-outline-secondary">Visit</a>
+                        <!-- LightOJ -->
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card h-100 text-center border-0 shadow-sm">
+                                <div class="card-body">
+                                    <i class="fas fa-laptop-code mb-3" style="font-size: 32px; color: #6c757d;"></i>
+                                    <h5 class="card-title">LightOJ</h5>
+                                    <p class="text-muted">~200+ Problems Solved</p>
+                                    <a href="https://lightoj.com/user/nibirjoydhar" target="_blank"
+                                        class="btn btn-sm btn-outline-secondary">Visit</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Wavy Divider -->
-        <div style="margin-top: -5px;">
-            <svg viewBox="0 0 1440 100" style="display: block;" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#f8f9fa" d="M0,64L1440,100L1440,0L0,0Z"></path>
-            </svg>
+            <!-- Wavy Divider -->
+            <div style="margin-top: -5px;">
+                <svg viewBox="0 0 1440 100" style="display: block;" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#f8f9fa" d="M0,64L1440,100L1440,0L0,0Z"></path>
+                </svg>
+            </div>
+
+            <!-- Education & Organization Section -->
+            <section id="education" class="p-3 p-md-5 bg-light" data-aos="fade-up">
+                <div class="container">
+                    <h2 class="section-title">Education & Organization</h2>
+                    <div class="row g-4">
+
+                        <!-- University -->
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body d-flex align-items-start">
+                                    <i class="fas fa-university fa-2x text-primary me-3"></i>
+                                    <div>
+                                        <h5 class="card-title mb-1">B.Sc. in Computer Science & Engineering</h5>
+                                        <p class="mb-1">Jagannath University, Dhaka</p>
+                                        <small class="text-muted">CGPA: 3.53 (till 4-1)</small>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Competitive Programming Club -->
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body d-flex align-items-start">
+                                    <i class="fas fa-users fa-2x text-success me-3"></i>
+                                    <div>
+                                        <h5 class="card-title mb-1">Member, Competitive Programming Club</h5>
+                                        <p class="mb-1">Jagannath University</p>
+                                        <small class="text-muted">Since 2020</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- IEEE Student Branch -->
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body d-flex align-items-start">
+                                    <i class="fas fa-microchip fa-2x text-info me-3"></i>
+                                    <div>
+                                        <h5 class="card-title mb-1">Member, IEEE Student Branch</h5>
+                                        <p class="mb-1">Jagannath University</p>
+                                        <small class="text-muted">Since 2023</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ICPC Team -->
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body d-flex align-items-start">
+                                    <i class="fas fa-code fa-2x text-danger me-3"></i>
+                                    <div>
+                                        <h5 class="card-title mb-1">Team Leader, JnU_TLE</h5>
+                                        <p class="mb-1">ICPC Dhaka Regional 2023</p>
+                                        <small class="text-muted">Team: JnU_TLE</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="p-4 p-md-5 glass-card mt-5 bg-dark text-white" data-aos="fade-left">
+                <div class="container">
+                    <div class="row">
+                        <!-- Contact Info -->
+                        <div class="col-md-6 mb-4">
+                            <h1 class="section-title text-white">Get in touch</h1>
+                            <div class="container">
+                                <p><i class="fas fa-envelope me-2"></i> <a href="mailto:nibirjoydhar@gmail.com"
+                                        class="text-white text-decoration-none">nibirjoydhar@gmail.com</a></p>
+                                <p><i class="fas fa-phone me-2"></i> <a href="tel:+8801521546883"
+                                        class="text-white text-decoration-none">+880 1521 546 883</a></p>
+                                <p><i class="fas fa-map-marker-alt me-2"></i> Jagannath University, Dhaka, Bangladesh
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="col-md-1 d-flex justify-content-center align-items-center">
+                            <div style="border-left: 2px solid #fff; height: 100%;"></div>
+                        </div>
+
+                        <!-- Contact Form -->
+                        <div class="col-md-5">
+                            <form id="contactForm">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" name="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Your Email</label>
+                                    <input type="email" class="form-control" name="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" name="message" rows="3" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </form>
+
+                            <div id="contactResponse" class="mt-3"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
         </div>
-
-        <!-- Education & Organization Section -->
-        <section id="education" class="p-5 bg-light" data-aos="fade-up">
-            <div class="container">
-                <h2 class="section-title">Education & Organization</h2>
-                <div class="row g-4">
-
-                    <!-- University -->
-                    <div class="col-md-6">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-body d-flex align-items-start">
-                                <i class="fas fa-university fa-2x text-primary me-3"></i>
-                                <div>
-                                    <h5 class="card-title mb-1">B.Sc. in Computer Science & Engineering</h5>
-                                    <p class="mb-1">Jagannath University, Dhaka</p>
-                                    <small class="text-muted">CGPA: 3.53 (till 4-1)</small>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Competitive Programming Club -->
-                    <div class="col-md-6">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-body d-flex align-items-start">
-                                <i class="fas fa-users fa-2x text-success me-3"></i>
-                                <div>
-                                    <h5 class="card-title mb-1">Member, Competitive Programming Club</h5>
-                                    <p class="mb-1">Jagannath University</p>
-                                    <small class="text-muted">Since 2020</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- IEEE Student Branch -->
-                    <div class="col-md-6">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-body d-flex align-items-start">
-                                <i class="fas fa-microchip fa-2x text-info me-3"></i>
-                                <div>
-                                    <h5 class="card-title mb-1">Member, IEEE Student Branch</h5>
-                                    <p class="mb-1">Jagannath University</p>
-                                    <small class="text-muted">Since 2023</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ICPC Team -->
-                    <div class="col-md-6">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-body d-flex align-items-start">
-                                <i class="fas fa-code fa-2x text-danger me-3"></i>
-                                <div>
-                                    <h5 class="card-title mb-1">Team Leader, JnU_TLE</h5>
-                                    <p class="mb-1">ICPC Dhaka Regional 2023</p>
-                                    <small class="text-muted">Team: JnU_TLE</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="p-5 glass-card mt-5 bg-dark text-white" data-aos="fade-left">
-            <div class="container">
-                <div class="row">
-                    <!-- Contact Info -->
-                    <div class="col-md-6 mb-4">
-                        <h1 class="section-title text-white">Get in touch</h1>
-                        <div class="container">
-                            <p><i class="fas fa-envelope me-2"></i> <a href="mailto:nibirjoydhar@gmail.com"
-                                    class="text-white text-decoration-none">nibirjoydhar@gmail.com</a></p>
-                            <p><i class="fas fa-phone me-2"></i> <a href="tel:+8801521546883"
-                                    class="text-white text-decoration-none">+880 1521 546 883</a></p>
-                            <p><i class="fas fa-map-marker-alt me-2"></i> Jagannath University, Dhaka, Bangladesh</p>
-                        </div>
-                    </div>
-
-                    <!-- Divider -->
-                    <div class="col-md-1 d-flex justify-content-center align-items-center">
-                        <div style="border-left: 2px solid #fff; height: 100%;"></div>
-                    </div>
-
-                    <!-- Contact Form -->
-                    <div class="col-md-5">
-                        <form id="contactForm">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Your Name</label>
-                                <input type="text" class="form-control" name="name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Your Email</label>
-                                <input type="email" class="form-control" name="email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control" name="message" rows="3" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                        </form>
-
-                        <div id="contactResponse" class="mt-3"></div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
     </div>
 
     <div class="mt-5"></div>
-    <footer class="bg-light text-dark pt-4 border-top">
+    <footer class="bg-light text-dark p-4 border-top">
         <div class="container">
             <div class="row">
                 <!-- Spacer -->
@@ -1004,12 +1068,12 @@
         </div>
 
         <!-- Footer Bottom -->
-        <div class="footer-bottom bg-secondary text-white py-2 mt-4">
-            <div class="container text-center">
-                <p class="mb-0">&copy; 2025 myPortfolio. All Rights Reserved.</p>
-            </div>
-        </div>
     </footer>
+    <div class="footer-bottom bg-secondary text-white py-2">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 myPortfolio. All Rights Reserved.</p>
+        </div>
+    </div>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
